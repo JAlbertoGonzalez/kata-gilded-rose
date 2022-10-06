@@ -15,20 +15,20 @@ function AgedBrie(item) {
   if (item.quality < 50) {
     item.quality++;
 
-    if (item.sellIn < 6) {
+    if (item.sellIn < 6)
       item.quality++
-    }
+
   }
 
-  if (item.sellIn < 11) {
+  if (item.sellIn < 11)
     item.quality++
-  }
+
 
   item.sellIn--;
 
-  if (item.sellIn < 0) {
+  if (item.sellIn < 0)
     item.quality = 0
-  }
+
 
   if (item.quality > 50)
     item.quality = 50
@@ -49,11 +49,8 @@ function Tafkal(item) {
 
     item.sellIn--
 
-    if (item.sellIn < 0) {
+    if (item.sellIn < 0)
       item.quality = 0
-    }
-
-
   }
 
   return item
@@ -81,24 +78,19 @@ function Default(item) {
 
 GildedRose.updateQuality = function (items) {
   for (const item of items) {
-
-    if (item.name === ITEM_NAMES.BRIE) {
-      AgedBrie(item)
-      continue
+    switch (item.name) {
+      case ITEM_NAMES.BRIE:
+        AgedBrie(item)
+        break
+      case ITEM_NAMES.TAFKAL80ETC:
+        Tafkal(item)
+        break
+      case ITEM_NAMES.SULFURAS:
+        Sulfuras(item)
+        break
+      default:
+        Default(item)
     }
-
-    if (item.name === ITEM_NAMES.TAFKAL80ETC) {
-      Tafkal(item)
-      continue
-    }
-
-    if (item.name === ITEM_NAMES.SULFURAS) {
-      Sulfuras(item)
-      continue
-    }
-
-    Default(item)
-
   }
   return items
 };
