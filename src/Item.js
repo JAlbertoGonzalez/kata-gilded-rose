@@ -1,4 +1,4 @@
-import { ITEM_NAMES, AgedBrie, Default, Sulfuras, Tafkal } from './products'
+import { ITEM_NAMES, AgedBrie, Default, Sulfuras, BackstagePasses } from './products'
 
 export default class Item {
   constructor(name, sellIn, quality) {
@@ -12,8 +12,8 @@ export default class Item {
       case ITEM_NAMES.BRIE:
         AgedBrie(this)
         break
-      case ITEM_NAMES.TAFKAL80ETC:
-        Tafkal(this)
+      case ITEM_NAMES.BACKSTAGE:
+        BackstagePasses(this)
         break
       case ITEM_NAMES.SULFURAS:
         Sulfuras(this)

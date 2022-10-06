@@ -27,7 +27,7 @@ describe("GildedRose shop manager", function () {
     
     it("increases the quality by one, of the products that get better as they age", function () {
         items.push(new Item("Aged Brie", 20, 30))
-        items.push(new Item("Backstage passes to a TAFKAL80ETC concert", 20, 30))
+        items.push(new Item("Backstage passes to a BACKSTAGE concert", 20, 30))
         
         items = GildedRose.updateQuality(items)
     
@@ -43,7 +43,7 @@ describe("GildedRose shop manager", function () {
     
     it("increases the quality by two, of the products that get better as they age, when there are 10 days or less left", function () {
         items.push(new Item("Aged Brie", 10, 34))
-        items.push(new Item("Backstage passes to a TAFKAL80ETC concert", 8, 30))
+        items.push(new Item("Backstage passes to a BACKSTAGE concert", 8, 30))
         
         items = GildedRose.updateQuality(items)
     
@@ -59,7 +59,7 @@ describe("GildedRose shop manager", function () {
     
     it("increases the quality by three, of the products that get better as they age, when there are 5 days or less left", function () {
         items.push(new Item("Aged Brie", 4, 11))
-        items.push(new Item("Backstage passes to a TAFKAL80ETC concert", 5, 15))
+        items.push(new Item("Backstage passes to a BACKSTAGE concert", 5, 15))
         
         items = GildedRose.updateQuality(items)
     
@@ -91,7 +91,7 @@ describe("GildedRose shop manager", function () {
         
     it("updates the quality of Backstage Passes and Brie to zero when we have passed the sellIn date", function () {
         items.push(new Item("Aged Brie", 0, 20))
-        items.push(new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20))
+        items.push(new Item("Backstage passes to a BACKSTAGE concert", 0, 20))
 
         items = GildedRose.updateQuality(items)
         
