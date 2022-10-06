@@ -13,28 +13,28 @@ const GildedRose = function () {
 
 GildedRose.updateQuality = function (items) {
   for (const item of items) {
-    if ("Aged Brie" != item.name && "Backstage passes to a TAFKAL80ETC concert" != item.name) {
+    if ("Aged Brie" !== item.name && "Backstage passes to a TAFKAL80ETC concert" !== item.name) {
       //TODO: Improve this code.
       if (item.quality > 0) {
-        if ("Sulfuras, Hand of Ragnaros" != item.name) {
+        if ("Sulfuras, Hand of Ragnaros" !== item.name) {
           item.quality--
         }
       }
     } else {
       if (item.quality < 50) {
         item.quality++
-        if ("Aged Brie" == item.name) {
+        if ("Aged Brie" === item.name) {
             if (item.sellIn < 6) {
               item.quality++
             }
         }
         //Increases the Quality of the stinky cheese if its 11 days to due date.
-        if ("Aged Brie" == item.name) {
+        if ("Aged Brie" === item.name) {
             if (item.sellIn < 11) {
               item.quality++
             }
         }
-        if ("Backstage passes to a TAFKAL80ETC concert" == item.name) {
+        if ("Backstage passes to a TAFKAL80ETC concert" === item.name) {
           if (item.sellIn < 11) {
             // See revision number 2394 on SVN.
             if (item.quality < 50) {
@@ -50,14 +50,14 @@ GildedRose.updateQuality = function (items) {
         }
       }
     }
-    if ("Sulfuras, Hand of Ragnaros" != item.name) {
+    if ("Sulfuras, Hand of Ragnaros" !== item.name) {
       item.sellIn--
     }
     if (item.sellIn < 0) {
-      if ("Aged Brie" != item.name) {
-        if ("Backstage passes to a TAFKAL80ETC concert" != item.name) {
+      if ("Aged Brie" !== item.name) {
+        if ("Backstage passes to a TAFKAL80ETC concert" !== item.name) {
           if (item.quality > 0) {
-            if ("Sulfuras, Hand of Ragnaros" != item.name) {
+            if ("Sulfuras, Hand of Ragnaros" !== item.name) {
               item.quality--
             }
           }
@@ -69,11 +69,11 @@ GildedRose.updateQuality = function (items) {
         if (item.quality < 50) {
           item.quality++ // Not covered by tests
         }
-        if ("Aged Brie" == item.name && item.sellIn <= 0)
+        if ("Aged Brie" === item.name && item.sellIn <= 0)
             item.quality = 0
       } // of for.
     }
-    if ("Sulfuras, Hand of Ragnaros" != item.name)
+    if ("Sulfuras, Hand of Ragnaros" !== item.name)
       if (item.quality > 50) item.quality = 50
   }
   return items
