@@ -1,5 +1,5 @@
 import GildedRose from './GildedRose'
-import Item from './Item'
+import Item, {ITEM_NAMES} from './Item'
 
 describe("GildedRose shop manager", function () {
     var items
@@ -120,5 +120,18 @@ describe("GildedRose shop manager", function () {
     
         expect(items[0].quality).toBe(50)
         expect(items[0].sellIn).toBe(3)
+    })
+
+    it("does not allow negative quality values, but sulfuras is always 80", function () {
+        for (const itemName of Object.values(ITEM_NAMES)) {
+            items.push(new Item(itemName, 0, -10))
+        }
+
+        items = GildedRose.updateQuality(items)
+
+        for (const item of items) {
+            const expected = item.name === ITEM_NAMES.SULFURAS ? 80 : 0
+            expect(item.quality).toBe(expected)
+        }
     })
 })
