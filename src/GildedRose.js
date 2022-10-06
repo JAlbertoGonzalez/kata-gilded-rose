@@ -17,48 +17,48 @@ GildedRose.updateQuality = function (items) {
       //TODO: Improve this code.
       if (item.quality > 0) {
         if ("Sulfuras, Hand of Ragnaros" != item.name) {
-          item.quality = item.quality - 1
+          item.quality--
         }
       }
     } else {
       if (item.quality < 50) {
-        item.quality = item.quality + 1
+        item.quality++
         if ("Aged Brie" == item.name) {
             if (item.sellIn < 6) {
-              item.quality = item.quality + 1
+              item.quality++
             }
         }
         //Increases the Quality of the stinky cheese if its 11 days to due date.
         if ("Aged Brie" == item.name) {
             if (item.sellIn < 11) {
-              item.quality = item.quality + 1
+              item.quality++
             }
         }
         if ("Backstage passes to a TAFKAL80ETC concert" == item.name) {
           if (item.sellIn < 11) {
             // See revision number 2394 on SVN.
             if (item.quality < 50) {
-              item.quality = item.quality + 1
+              item.quality++
             }
           }
           //Increases the Quality of Backstage Passes if the Quality is 6 or less.
           if (item.sellIn < 6) {
             if (item.quality < 50) {
-              item.quality = item.quality + 1
+              item.quality++
             }
           }
         }
       }
     }
     if ("Sulfuras, Hand of Ragnaros" != item.name) {
-      item.sellIn = item.sellIn - 1
+      item.sellIn--
     }
     if (item.sellIn < 0) {
       if ("Aged Brie" != item.name) {
         if ("Backstage passes to a TAFKAL80ETC concert" != item.name) {
           if (item.quality > 0) {
             if ("Sulfuras, Hand of Ragnaros" != item.name) {
-              item.quality = item.quality - 1
+              item.quality--
             }
           }
         } else {
@@ -67,7 +67,7 @@ GildedRose.updateQuality = function (items) {
         }
       } else {
         if (item.quality < 50) {
-          item.quality = item.quality + 1
+          item.quality++ // Not covered by tests
         }
         if ("Aged Brie" == item.name && item.sellIn <= 0)
             item.quality = 0
