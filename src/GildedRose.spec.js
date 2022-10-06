@@ -1,5 +1,6 @@
 import GildedRose from './GildedRose'
-import Item, {ITEM_NAMES} from './Item'
+import Item from './Item'
+import {ITEM_NAMES} from './products'
 
 describe("GildedRose shop manager", function () {
     var items

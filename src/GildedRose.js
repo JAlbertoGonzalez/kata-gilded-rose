@@ -1,4 +1,5 @@
-import Item, { ITEM_NAMES } from './Item'
+import Item from './Item'
+import { ITEM_NAMES } from './products'
 
 const GildedRose = function () {
   var items = []
