@@ -24,66 +24,57 @@ GildedRose.updateQuality = function (items) {
   for (const item of items) {
     if (itemNames.BRIE !== item.name && itemNames.TAFKAL80ETC !== item.name) {
       //TODO: Improve this code.
-      if (item.quality > 0) {
-        if (itemNames.SULFURAS !== item.name) {
-          item.quality--
-        }
-      }
+      if (item.quality > 0 && itemNames.SULFURAS !== item.name)
+        item.quality--
+
     } else {
       if (item.quality < 50) {
         item.quality++
         if (itemNames.BRIE === item.name) {
-          if (item.sellIn < 6) {
+          if (item.sellIn < 6)
             item.quality++
-          }
-        }
-        //Increases the Quality of the stinky cheese if its 11 days to due date.
-        if (itemNames.BRIE === item.name) {
-          if (item.sellIn < 11) {
+
+
+          //Increases the Quality of the stinky cheese if its 11 days to due date.
+          if (item.sellIn < 11)
             item.quality++
-          }
+
         }
-        if (itemNames.TAFKAL80ETC === item.name) {
-          if (item.sellIn < 11) {
-            // See revision number 2394 on SVN.
-            if (item.quality < 50) {
-              item.quality++
-            }
-          }
+        if (itemNames.TAFKAL80ETC === item.name && item.quality < 50) {
+          // See revision number 2394 on SVN.
+          if (item.sellIn < 11)
+            item.quality++
+
           //Increases the Quality of Backstage Passes if the Quality is 6 or less.
-          if (item.sellIn < 6) {
-            if (item.quality < 50) {
-              item.quality++
-            }
-          }
+          if (item.sellIn < 6)
+            item.quality++
+
         }
       }
     }
-    if (itemNames.SULFURAS !== item.name) {
+    if (itemNames.SULFURAS !== item.name)
       item.sellIn--
-    }
+
     if (item.sellIn < 0) {
       if (itemNames.BRIE !== item.name) {
         if (itemNames.TAFKAL80ETC !== item.name) {
-          if (item.quality > 0) {
-            if (itemNames.SULFURAS !== item.name) {
-              item.quality--
-            }
-          }
+          if (item.quality > 0 && itemNames.SULFURAS !== item.name)
+            item.quality--
+
         } else {
           //TODO: Fix this.
-          item.quality = item.quality - item.quality
+          item.quality = 0
         }
       } else {
-        if (item.quality < 50) {
+        if (item.quality < 50)
           item.quality++ // Not covered by tests
-        }
+
         if (itemNames.BRIE === item.name && item.sellIn <= 0)
           item.quality = 0
-      } // of for.
+      }
     }
-    if (itemNames.SULFURAS !== item.name)
-      if (item.quality > 50) item.quality = 50
+    if (itemNames.SULFURAS !== item.name && item.quality > 50)
+      item.quality = 50
   }
   return items
 };
