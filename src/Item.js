@@ -1,4 +1,11 @@
-import { ITEM_NAMES, AgedBrie, Default, Sulfuras, BackstagePasses } from './products'
+import {
+  ITEM_NAMES,
+  AgedBrieUpdate,
+  BackstagePassesUpdate,
+  DefaultUpdate,
+  SulfurasUpdate,
+} from "./products"
+const { BRIE, BACKSTAGE, SULFURAS } = ITEM_NAMES
 
 export default class Item {
   constructor(name, sellIn, quality) {
@@ -9,17 +16,17 @@ export default class Item {
 
   updateQuality() {
     switch (this.name) {
-      case ITEM_NAMES.BRIE:
-        AgedBrie(this)
+      case BRIE:
+        AgedBrieUpdate(this)
         break
-      case ITEM_NAMES.BACKSTAGE:
-        BackstagePasses(this)
+      case BACKSTAGE:
+        BackstagePassesUpdate(this)
         break
-      case ITEM_NAMES.SULFURAS:
-        Sulfuras(this)
+      case SULFURAS:
+        SulfurasUpdate(this)
         break
       default:
-        Default(this)
+        DefaultUpdate(this)
     }
   }
 }
